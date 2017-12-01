@@ -28,7 +28,7 @@
 					<a href="login.php">Login</a>
 				</li>
 				<li class="<?=(strcmp($header_active_link, 'cart') == 0) ? 'active' : ''?>">
-					<a href="cart.php">My cart</a>
+					<a href="signup.php">SignUp</a>
 				</li>
 				<li class="dropdown">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Account
