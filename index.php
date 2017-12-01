@@ -7,6 +7,10 @@
 		?>
 	</head>
 	<body>
+		<?php
+			$header_active_link = "about";
+			include "partials/navbar.php";
+		?>
 		<h1>Welcome to the Hotel Reservation</h1>
 
 		<?php
