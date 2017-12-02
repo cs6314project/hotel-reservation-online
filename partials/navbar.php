@@ -24,7 +24,9 @@
 				</li>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
+
 				<?php if (!isset($_SESSION['email'])) { ?>
+
 				<li class="<?=(strcmp($header_active_link, 'login') == 0) ? 'active' : ''?>">
 					<a href="login.php">Login</a>
 				</li>
@@ -33,16 +35,41 @@
 				</li>
 
 				<?php } else { ?>
+
 				<li>
 					<a>What's Up, <?=$_SESSION["first_name"]?></a>
 				</li>
 				<li class="dropdown">
+					
+					<?php if ($_SESSION['is_admin'] == 1) { ?>
+
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Admin Functions
+						<span class="caret"></span>
+					</a>
+					<ul class="dropdown-menu">
+						<li>
+							<a href="rooms.php?display_rooms=all&todo=add">Add Room</a>
+						</li>
+						<li>
+							<a href="rooms.php?display_rooms=all&todo=edit">Edit Room</a>
+						</li>
+						<li>
+							<a href="rooms.php?display_rooms=all&todo=delete">Delete Room</a>
+						</li>
+						<li role="separator" class="divider"></li>
+						<li>
+							<a href="#" onclick="app.logout();">Logout</a>
+						</li>
+					</ul>
+
+					<?php } else { ?>
+
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Account
 						<span class="caret"></span>
 					</a>
 					<ul class="dropdown-menu">
 						<li>
-							<a href="accountview.php">My account</a>
+							<a href="wishlist.php">My Wishlist</a>
 						</li>
 						<li>
 							<a href="orderhistory.php">My purchase history</a>
@@ -52,6 +79,8 @@
 							<a href="#" onclick="app.logout();">Logout</a>
 						</li>
 					</ul>
+
+					<?php } ?>
 				</li>
 				<?php } ?>
 			</ul>
