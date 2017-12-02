@@ -10,6 +10,7 @@
 		<?php
 			$header_active_link = "";
 			include "partials/navbar.php";
+			include "partials/notifications.php";
 		?>
 		<div class="container">
 			<div class="row">
@@ -19,42 +20,49 @@
 			</div>
 			<div class="row">
 				<div class="col-xs-12">
-					<form id="loginForm" action="signUpProcessing.php" method="POST">
-						<div class="row">
-							<div class="col-xs-3">
+					<form id="signUpForm" action="api/signUp.php" method="POST">
+						<div class="row form-group">
+							<div class="col-xs-12 col-md-3">
 								<label for="firstName">First Name</label>
-								<input type="text" class="form-control" id="firstName" name="first_name" placeholder="First Name">
+								<input type="text" class="form-control" id="firstName" name="first_name" placeholder="First Name" autofocus="true" required>
+								<div class="info"></div>
 							</div>
 						</div>
-						<br>
-						<div class="row">
-							<div class="col-xs-3">
+						<div class="row form-group">
+							<div class="col-xs-12 col-md-3">
 								<label for="lastName">Last Name</label>
-								<input type="text" class="form-control" id="lastName" name="last_name" placeholder="Last Name">
+								<input type="text" class="form-control" id="lastName" name="last_name" placeholder="Last Name" required>
+								<div class="info"></div>
 							</div>
 						</div>
-						<br>
-						<div class="row">
-							<div class="col-xs-3">
+						<div class="row form-group">
+							<div class="col-xs-12 col-md-3">
 								<label for="email">Email</label>
-								<input type="email" class="form-control" id="email" name="email" placeholder="Email">
+								<input type="email" class="form-control" id="email" name="email" placeholder="Email" required>
+								<div class="info"></div>
 							</div>
 						</div>
-						<br>
-						<div class="row">
-							<div class="col-xs-3">
+						<div class="row form-group">
+							<div class="col-xs-12 col-md-3">
 								<label for="password">Password</label>
-								<input type="password" class="form-control" id="password" name="password" placeholder="Password">
+								<input type="password" class="form-control" id="password" name="password" placeholder="Password" required>
+								<div class="info"></div>
 							</div>
 						</div>
-						<br>
-						<div class="row">
-							<div class="col-xs-3">
+						<div class="row form-group">
+							<div class="col-xs-12 col-md-3">
+								<label for="password">Confirm Password</label>
+								<input type="password" class="form-control" id="confirmPassword" name="confirm_password" placeholder="Password" required>
+								<div class="info"></div>
+							</div>
+						</div>
+						<div class="row form-group">
+							<div class="col-xs-12 col-md-3">
 								<label for="phoneNumber">Phone Numner</label>
-								<input type="tel" class="form-control" id="phoneNumber" name="phone_number" placeholder="Password">
+								<input type="tel" class="form-control" id="phoneNumber" name="phone_number" placeholder="Phone Number" required>
+								<div class="info"></div>
 							</div>
 						</div>
-						<br>
 						<button type="submit" class="btn btn-primary">Sign Up</button>
 					</form>
 				</div>
@@ -64,5 +72,7 @@
 		<?php
 			include "partials/footer.php";
 		?>
+		<script src="js/signUpPage.js"></script>
 	</body>
+	<div class="cover"><div id="pageLoading"></div></div>
 </html>

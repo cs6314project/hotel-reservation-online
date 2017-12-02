@@ -1,3 +1,10 @@
+<?php
+	session_start();
+
+	if (isset($_SESSION['email'])) {
+		exit(header("Location:index.php"));
+	}
+?>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -10,6 +17,7 @@
 		<?php
 			$header_active_link = "";
 			include "partials/navbar.php";
+			include "partials/notifications.php";
 		?>
 		<div class="container">
 			<div class="row">
@@ -19,21 +27,19 @@
 			</div>
 			<div class="row">
 				<div class="col-xs-12">
-					<form id="loginForm" action="loginProcessing.php" method="POST">
-						<div class="row">
+					<form id="loginForm" action="api/login.php" method="POST">
+						<div class="row form-group">
 							<div class="col-xs-3">
 								<label for="name">Email</label>
-								<input type="email" class="form-control" id="email" name="email" placeholder="Email">
+								<input type="email" class="form-control" id="email" name="email" placeholder="Email" autofocus="true" required>
 							</div>
 						</div>
-						<br>
-						<div class="row">
+						<div class="row form-group">
 							<div class="col-xs-3">
 								<label for="password">Password</label>
-								<input type="password" class="form-control" id="password" name="password" placeholder="Password">
+								<input type="password" class="form-control" id="password" name="password" placeholder="Password" required>
 							</div>
 						</div>
-						<br>
 						<button type="submit" class="btn btn-primary">Login</button>
 					</form>
 				</div>
@@ -43,5 +49,7 @@
 		<?php
 			include "partials/footer.php";
 		?>
+		<script src="js/loginPage.js"></script>
 	</body>
+	<div class="cover"><div id="pageLoading"></div></div>
 </html>

@@ -15,3 +15,5 @@
 <?php
 	}
 ?>
+<script src="js/jquery.form.min.js"></script>
+<script src="js/app.js"></script>

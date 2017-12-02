@@ -24,11 +24,17 @@
 				</li>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
+				<?php if (!isset($_SESSION['email'])) { ?>
 				<li class="<?=(strcmp($header_active_link, 'login') == 0) ? 'active' : ''?>">
 					<a href="login.php">Login</a>
 				</li>
 				<li class="<?=(strcmp($header_active_link, 'cart') == 0) ? 'active' : ''?>">
 					<a href="signup.php">SignUp</a>
+				</li>
+
+				<?php } else { ?>
+				<li>
+					<a>What's Up, <?=$_SESSION["first_name"]?></a>
 				</li>
 				<li class="dropdown">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Account
@@ -43,10 +49,11 @@
 						</li>
 						<li role="separator" class="divider"></li>
 						<li>
-							<a href="#">Logout</a>
+							<a href="#" onclick="app.logout();">Logout</a>
 						</li>
 					</ul>
 				</li>
+				<?php } ?>
 			</ul>
 		</div>
 		<!-- /.navbar-collapse -->

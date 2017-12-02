@@ -2,6 +2,79 @@ body {
     padding-top: 60px;
 }
 
+/* Neelabh's Additions - Start */
+.cover {
+    position: fixed;
+    overflow-y: hidden;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 0.50;
+    background: black;
+    z-index: 1050;
+    display: none;
+}
+
+.loader {
+    background: url('../img/loading.gif') no-repeat;
+    position: absolute;
+    z-index: 9999;
+    height: 200px;
+    width: 200px;
+    transform: translate(-12%, -12%);
+    left: 50%;
+    top: 50%;
+}
+
+.notification_outer {
+    left: -3px;
+    top: 60px;
+    width: 100%;
+    text-align: center;
+    z-index: 1060;
+    position: fixed;
+}
+
+.notification_success {
+    border-radius: 8px;
+    max-width: 250px;
+    height: auto;
+    margin: auto;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    background-color: #9CCC65;
+    box-shadow: 5px 5px 2px #888888;
+    opacity: 0.95;
+    word-wrap: break-word;
+}
+
+.notification_failure {
+    color: #fff;
+    border-radius: 8px;
+    max-width: 250px;
+    height: auto;
+    margin: auto;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    background-color: #ef5350;
+    box-shadow: 5px 5px 2px #888888;
+    opacity: 0.95;
+    word-wrap: break-word;
+}
+
+.info {
+    color: #b71c1c;
+}
+
+/* Neelabh's Additions - End */
+
 /* Abhishek Addition - Start */
     .header {
         width: 100%;
