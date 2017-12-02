@@ -9,7 +9,7 @@
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="index.html">Hotel Reservation<span class="sr-only">(current)</span>
+			<a class="navbar-brand" href="index.php">Hotel Reservation<span class="sr-only">(current)</span>
 			</a>
 		</div>
 
