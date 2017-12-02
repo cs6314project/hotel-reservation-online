@@ -40,6 +40,7 @@
 			while ($row_users = mysqli_fetch_assoc($result_users)) {
 				$_SESSION["email"] = $row_users["email"];
 				$_SESSION["first_name"] = $row_users["first_name"];
+				$_SESSION["is_admin"] = $row_users["is_admin"];
 				$response = createResponse(1, "Login Successfull");
 			}
         } else {
