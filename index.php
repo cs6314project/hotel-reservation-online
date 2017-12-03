@@ -3,19 +3,26 @@
 <html lang="en">
 	<head>
 		<?php
-			$page_title = "Let's Go!";
+			$page_title = "Home";
 			include "partials/header.php";
 		?>
+		<link rel="stylesheet" href="css/datepicker.css">
 	</head>
 	<body>
 		<?php
 			$header_active_link = "about";
 			include "partials/navbar.php";
+			include "partials/searchbar.php";
 		?>
-		<h1>Welcome to the Hotel Reservation</h1>
 
 		<?php
 			include "partials/footer.php";
 		?>
+		<script src="js/bootstrap-datepicker.js"></script>
+		<script>
+			$('.input-daterange input').each(function () {
+				$(this).datepicker();
+			});
+		</script>
 	</body>
 </html>
