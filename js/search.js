@@ -43,7 +43,6 @@ function roomHTML(obj) {
     }
     form += '</div>';
     var name = '<h3>' + obj.name + '</h3>';
-    var loc = '<p>' + obj.location + '</p>';
     var beds = '<p>' + obj.numbeds + ' ' + obj.bedsize + ' size bed';
     if (obj.numbeds > 1)
         beds += 's';
@@ -53,7 +52,7 @@ function roomHTML(obj) {
         features += '<li>' + featureStrings[value] + '</li>';
     });
     features = '<ul>' + features + '</ul>';
-    var desc = form + name + loc + beds + features;
+    var desc = form + name + beds + features;
     var html = '<div class="row room center-block">' + img + desc + favBtn + '</div>';
     return html;
 }
@@ -93,7 +92,6 @@ function filter() {
     var pricemax = $("#price-max").val();
     var array = [];
     var data = {
-        "location": findGetParameter("location"),
         "start": sqlDateFormat(findGetParameter("start")),
         "end": sqlDateFormat(findGetParameter("end")),
         "maxoccupants": findGetParameter("maxoccupants")

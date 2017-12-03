@@ -19,17 +19,16 @@
 
 					if($email) {
 						echo '<table class="table table-striped table-condensed">';
-						echo '<tr><th>Room</th><th>Location</th><th>Reservation placed</th><th>Stay began</th><th>Stay Ended</th><th>Cost</th></tr>';
+						echo '<tr><th>Room</th><th>Reservation placed</th><th>Stay began</th><th>Stay Ended</th><th>Cost</th></tr>';
 						$resQuery = "SELECT * FROM reservation WHERE useremail = '$email'";
 						$resResult = mysqli_query($link, $resQuery);
 						while($row = mysqli_fetch_array($resResult)) {
 							echo '<tr>';
 							$id = $row["roomid"];
-							$roomQuery = "SELECT name, location FROM room WHERE id = $id";
+							$roomQuery = "SELECT name FROM room WHERE id = $id";
 							$roomResult = mysqli_query($link, $roomQuery);
 							$roomRow = mysqli_fetch_array($roomResult);
 							echo '<td>'.$roomRow["name"].'</td>';
-							echo '<td>'.$roomRow["location"].'</td>';
 							echo '<td>'.$row["timeplaced"].'</td>';
 							echo '<td>'.$row["checkin"].'</td>';
 							echo '<td>'.$row["checkout"].'</td>';

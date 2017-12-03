@@ -5,7 +5,6 @@
         $admin = $_SESSION["admin"];
     }
 
-    $loc = $_GET["location"];
     $start = $_GET["start"];
     $end = $_GET["end"];
     $occ = $_GET["maxoccupants"];
@@ -15,10 +14,7 @@
     $roomQuery = "SELECT * FROM Room ";
     $queryadditions = " WHERE ";
     $added = false;
-    if(isset($loc) && $loc != null) {
-        $queryadditions .= " location = '$loc' ";
-        $added = true;
-    }
+    
     if(isset($start) && isset($end) && $start != null && $end != null) {
         if($added) $queryadditions .= " AND ";
         $overlaps = " ('$start' BETWEEN checkin AND checkout) OR ('$end' BETWEEN checkin AND checkout) ";

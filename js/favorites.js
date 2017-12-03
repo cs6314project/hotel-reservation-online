@@ -36,8 +36,7 @@ function roomHTML(obj) {
     }
     var form = '<div class="book-form">' + price + submitBtn;
     form += '</div>';
-    var name = '<h3>' + obj.name + '</h3>';
-    var loc = '<p>' + obj.location + '</p>';
+    var name = '<h3>' + obj.name + '</h3>'
     var beds = '<p>' + obj.numbeds + ' ' + obj.bedsize + ' size bed';
     if (obj.numbeds > 1)
         beds += 's';
@@ -47,7 +46,7 @@ function roomHTML(obj) {
         features += '<li>' + featureStrings[value] + '</li>';
     });
     features = '<ul>' + features + '</ul>';
-    var desc = form + name + loc + beds + features;
+    var desc = form + name + beds + features;
     var html = '<div class="row room center-block">' + img + desc + favBtn + '</div>';
     return html;
 }
