@@ -1,7 +1,7 @@
 <?php 
     session_start();
     
-    include "partials/db_connect.php";
+    include "../partials/db_connect.php";
     openDatabaseConnection();
     $roomQuery = "SELECT * FROM Room ";
     $email = "email@example";
