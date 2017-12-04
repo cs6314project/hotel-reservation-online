@@ -41,6 +41,7 @@
 				<div class="col-xs-12">
 					<form id="editRoomForm" action="api/admin/room.php" method="POST">
 						<input type="hidden" name="operation" value="edit">
+						<input type="hidden" name="roomid" value="<?=$roomid ?>">
 						<div class="row form-group">
 							<div class="col-xs-12 col-md-3">
 								<label for="roomName">Room Name</label>

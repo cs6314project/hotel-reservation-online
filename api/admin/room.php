@@ -105,7 +105,15 @@
 				echo "<br>Could not insert";
 			}
 		} else if($operation == "edit") {
-			
+			$roomid = $_POST["roomid"];
+			$sql = "UPDATE room SET name='$name', price=$price, numbeds=$numbeds, bedsize='$bedsize', maxoccupants=$maxoccupants, description='$description'  WHERE id=".$roomid;
+			$result_update = mysqli_query($link, $sql);
+
+			if ($result_update) {
+				$response = array("status" => 1, "message" => "Updated");
+			} else {
+				$response = array("status" => 1, "message" => "NOt Updated", "sql" => $sql);
+			}
 		}
 
 		// Delete Room
