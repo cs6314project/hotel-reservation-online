@@ -31,7 +31,7 @@ function roomHTML(obj) {
     var hiddenCheckout = '<input type="hidden" name="checkout" value="'+findGetParameter("end")+'" />';
     var hiddenNum = '<input type="hidden" name="numoccupants" value="'+findGetParameter("maxoccupants")+'" />';
     var hiddenParams = hiddenID+hiddenCheckin+hiddenCheckout+hiddenNum;
-    var submitBtn = '<form action="details.php" method="GET"><button class="btn btn-primary">Book Now</button>' + hiddenParams + '</form>';
+    var submitBtn = '<form action="product_details.php" method="GET"><button class="btn btn-primary">Book Now</button>' + hiddenParams + '</form>';
     var editBtn = '<form action="editroom.php" method="GET"><button class="btn btn-default">Edit</button>' + hiddenID + '</form>';
     var removeBtn = '<form action="removeroom.php"><button class="btn btn-default">Remove</button>' + hiddenID + '</form>';
     var favBtn = "";
