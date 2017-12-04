@@ -37,20 +37,7 @@
 				</li>
 				
 				<li class="dropdown">
-					
-					<?php if ($_SESSION['is_admin'] == 1) { ?>
-
-					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Account
-						<span class="caret"></span>
-					</a>
-					<ul class="dropdown-menu">
-					
-						<li>
-							<a href="#" onclick="app.logout();">Logout</a>
-						</li>
-					</ul>
-
-					<?php } else { ?>
+				
 
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Account
 						<span class="caret"></span>
@@ -68,7 +55,6 @@
 						</li>
 					</ul>
 
-					<?php } ?>
 				</li>
 				<?php } ?>
 			</ul>
