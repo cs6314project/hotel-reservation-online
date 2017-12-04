@@ -15,7 +15,7 @@ $(document).ready(function() {
 		complete:function(data){
 			data = JSON.parse(data.responseText);
 			if(data.status == 1) {
-				window.location.href = "admin-rooms.php";
+				window.location.href = "search.php";
 			}
 		}
 	});

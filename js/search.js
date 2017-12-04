@@ -35,7 +35,7 @@ function roomHTML(obj) {
     var hiddenNum = '<input type="hidden" name="numoccupants" value="'+maxoccupants+'" />';
     var hiddenParams = hiddenID+hiddenCheckin+hiddenCheckout+hiddenNum;
     var submitBtn = '<form action="product_details.php" method="GET"><button class="btn btn-primary">Book Now</button>' + hiddenParams + '</form>';
-    var editBtn = '<form action="editroom.php" method="GET"><button class="btn btn-default">Edit</button>' + hiddenID + '</form>';
+    var editBtn = '<form action="admin-edit-room.php" method="POST"><button class="btn btn-default">Edit</button>' + hiddenID + '</form>';
     var removeBtn = '<form action="admin-delete-room.php" method="POST"><button class="btn btn-danger">Remove</button>' + hiddenID + '</form>';
     var favBtn = "";
     if (obj.favorite != null) {

@@ -104,6 +104,8 @@
 			} else {
 				echo "<br>Could not insert";
 			}
+		} else if($operation == "edit") {
+			
 		}
 
 		// Delete Room
