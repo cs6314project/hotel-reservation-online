@@ -36,7 +36,7 @@ function roomHTML(obj) {
     var hiddenParams = hiddenID+hiddenCheckin+hiddenCheckout+hiddenNum;
     var submitBtn = '<form action="product_details.php" method="GET"><button class="btn btn-primary">Book Now</button>' + hiddenParams + '</form>';
     var editBtn = '<form action="editroom.php" method="GET"><button class="btn btn-default">Edit</button>' + hiddenID + '</form>';
-    var removeBtn = '<form action="removeroom.php"><button class="btn btn-default">Remove</button>' + hiddenID + '</form>';
+    var removeBtn = '<form action="admin-delete-room.php" method="POST"><button class="btn btn-default">Remove</button>' + hiddenID + '</form>';
     var favBtn = "";
     if (obj.favorite != null) {
         if (obj.favorite)
@@ -123,7 +123,7 @@ function filter() {
                 if (value == "on" && hasFeature == -1)
                     add = false;
             });
-            if (add)
+            if (add && !(this.deleted==1))
                 if ((!pricemin || pricemin <= room.price) && (!pricemax ||
                         pricemax >= room.price))
                     array.push(room);

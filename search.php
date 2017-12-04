@@ -65,8 +65,8 @@
 
 			<div class="col-md-9">
 				<?php 
-					if($_SESSION["admin"]) 
-						echo '<form action="addroom.php"><button class="btn btn-primary">Add a room</button></form>';
+					if($_SESSION["is_admin"]) 
+						echo '<form action="admin-add-room.php"><button class="btn btn-primary">Add a room</button></form>';
 				?>
 				<div id="searchresults"></div>
 				<div id="pagebuttons"></div>

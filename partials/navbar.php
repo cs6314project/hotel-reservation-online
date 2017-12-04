@@ -38,14 +38,11 @@
 					
 					<?php if ($_SESSION['is_admin'] == 1) { ?>
 
-					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Admin Functions
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Account
 						<span class="caret"></span>
 					</a>
 					<ul class="dropdown-menu">
-						<li>
-							<a href="admin-rooms.php">Add/Edit/Delete Rooms</a>
-						</li>
-						<li role="separator" class="divider"></li>
+					
 						<li>
 							<a href="#" onclick="app.logout();">Logout</a>
 						</li>
