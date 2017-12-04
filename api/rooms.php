@@ -27,12 +27,12 @@
     }
     elseif(isset($start) && $start != null) {
         if($added) $queryadditions .= " AND ";
-        $queryadditions .= " (SELECT COUNT(1) FROM reservation WHERE '$start' BETWEEN checkin AND checkout) = 0 ";
+        $queryadditions .= " (SELECT COUNT(1) FROM reservation WHERE roomid = id AND ('$start' BETWEEN checkin AND checkout)) = 0 ";
         $added = true;
     }
     elseif(isset($end) && $end != null) {
         if($added) $queryadditions .= " AND ";
-        $queryadditions .= " (SELECT COUNT(1) FROM reservation WHERE '$end' BETWEEN checkin AND checkout) = 0 ";
+        $queryadditions .= " (SELECT COUNT(1) FROM reservation WHERE roomid = id AND ('$end' BETWEEN checkin AND checkout)) = 0 ";
         $added = true;
     }
     if(isset($occ) && $occ != null) {
