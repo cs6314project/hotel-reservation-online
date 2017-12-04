@@ -1,9 +1,15 @@
-<?php session_start(); ?>
+<?php
+	session_start();
+
+	if (!isset($_SESSION['email'])) {
+		exit(header("Location:index.php"));
+	}
+?>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
 		<?php
-			$page_title = "Wishlist";
+			$page_title = "Favourites";
 			include "partials/header.php";
 		?>
 		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -12,6 +18,7 @@
 	<body>
 		<?php 
 			include "partials/navbar.php";
+			include "partials/notifications.php";
 		?>
 		<div class="container-fluid">
 
