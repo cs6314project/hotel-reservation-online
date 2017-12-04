@@ -27,7 +27,7 @@
 			<div class="col-md-8 col-md-offset-2">
 				<?php
 					openDatabaseConnection();
-					$sql_rooms = "SELECT * FROM Room";
+					$sql_rooms = "SELECT * FROM Room WHERE deleted=0";
 
 					$result_rooms = mysqli_query($link, $sql_rooms);
 

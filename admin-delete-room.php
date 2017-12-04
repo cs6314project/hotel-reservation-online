@@ -26,7 +26,10 @@
 
 			openDatabaseConnection();
 
-			$sql_remove_roomfeatures = "DELETE FROM roomfeatures WHERE roomid=$roomid";
+			$sql_update_deleted = "UPDATE room SET deleted =1 WHERE roomid=$roomid";
+			$result_update_deleted = mysqli_query($link, $sql_update_deleted);
+
+			/*$sql_remove_roomfeatures = "DELETE FROM roomfeatures WHERE roomid=$roomid";
 			$result_remove_roomfeatures = mysqli_query($link, $sql_remove_roomfeatures);
 
 			if ($result_remove_roomfeatures) {
@@ -41,6 +44,13 @@
 				}
 			} else {
 				echo "could not Delete room feature";
+			}*/
+
+			if ($result_update_deleted) {
+				echo "<div class='text-center'><h3>Room deletetion successfull</h3><br>";
+				echo "<a href='admin-rooms.php'><- Go Back</a></div>";
+			} else {
+				echo "Could not Delete Room";
 			}
 
 			closeDatabaseConnection();
