@@ -206,7 +206,7 @@
                 $(document).ready(function () {
                     $("#checkin").val(findGetParameter("checkin"));
                     $("#checkout").val(findGetParameter("checkout"));
-                    $("#").val(findGetParameter("numoccupants"));
+                    $("#availability").val(findGetParameter("numoccupants"));
                 });
 
                 //for number of days calculation
