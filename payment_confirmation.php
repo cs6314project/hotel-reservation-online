@@ -26,7 +26,7 @@
             $cost = $_POST["cost"];
             $query = "INSERT INTO reservation (roomid, useremail, checkin, checkout, timeplaced, cost) VALUES (";
             $query .= "$roomid, '$email', '$checkin', '$checkout', now(), $cost);";
-            echo $query;
+            //echo $query;
             $success = mysqli_query($link, $query);
 
             closeDatabaseConnection();
@@ -54,7 +54,7 @@
                                 <label for="cardNumber">Your payment has been made successfully.</label>
                                 <?php } ?>
                             </div>
-                            <button class="btn btn-success btn-lg btn-block" type="submit">Return to the homepage</button>
+                            <a class="btn btn-success btn-lg btn-block" href="index.php">Return to the homepage</a>
                         </div>
                     </div>
                 </div>
