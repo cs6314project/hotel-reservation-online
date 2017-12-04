@@ -2,6 +2,9 @@ var itemsPerPage = 4;
 var currentPage = 1;
 var rooms = [];
 var isAdmin = false;
+var checkin = "";
+var checkout = "";
+var numOccupants = "";
 
 var featureStrings = [];
 featureStrings.wifi = '<i class="material-icons md-18">wifi</i>Free Wireless Internet';
@@ -27,9 +30,9 @@ function roomHTML(obj) {
     var img = '<img src="img/room'+obj.id+'/1.jpg" alt="' + obj.name + '"/>';
     var price = '<p>$' + obj.price + '/night</p>';
     var hiddenID = '<input type="hidden" name="roomid" value="' + obj.id + '" />';
-    var hiddenCheckin = '<input type="hidden" name="checkin" value="'+findGetParameter("start")+'" />';
-    var hiddenCheckout = '<input type="hidden" name="checkout" value="'+findGetParameter("end")+'" />';
-    var hiddenNum = '<input type="hidden" name="numoccupants" value="'+findGetParameter("maxoccupants")+'" />';
+    var hiddenCheckin = '<input type="hidden" name="checkin" value="'+checkin+'" />';
+    var hiddenCheckout = '<input type="hidden" name="checkout" value="'+checkout+'" />';
+    var hiddenNum = '<input type="hidden" name="numoccupants" value="'+maxoccupants+'" />';
     var hiddenParams = hiddenID+hiddenCheckin+hiddenCheckout+hiddenNum;
     var submitBtn = '<form action="product_details.php" method="GET"><button class="btn btn-primary">Book Now</button>' + hiddenParams + '</form>';
     var editBtn = '<form action="editroom.php" method="GET"><button class="btn btn-default">Edit</button>' + hiddenID + '</form>';
@@ -105,9 +108,9 @@ function filter() {
     var pricemax = $("#price-max").val();
     var array = [];
     var data = {
-        "start": sqlDateFormat(findGetParameter("start")),
-        "end": sqlDateFormat(findGetParameter("end")),
-        "maxoccupants": findGetParameter("maxoccupants")
+        "start": checkin,
+        "end": checkout,
+        "maxoccupants": numoccupants
     }
     $.getJSON("api/rooms.php", data, function (result) {
         isAdmin = result.isadmin;
@@ -162,12 +165,28 @@ function displayPage() {
 
 $(document).ready(function () {
     $('.input-daterange input').each(function () {
-        $(this).datepicker();
+        $(this).datepicker({}).on("changeDate", function() {
+            if($(this).attr("name") == "start") 
+                checkin = $(this).val();
+            else if($(this).attr("name") == "end") 
+                checkout = $(this).val();
+            //alert(checkin + "  "+ checkout);
+            filter();
+        });
     });
 
-    $('input[name="start"]').val(findGetParameter("start"));
-    $('input[name="end"]').val(findGetParameter("end"));
-    $('input[name="maxoccupants"]').val(findGetParameter("maxoccupants"));
+    $("#maxoccupants").on("input", function() {
+        numoccupants = $(this).val();
+        filter();
+    });
+
+    $('#start').val(findGetParameter("start"));
+    $('#end').val(findGetParameter("end"));
+    $('#maxoccupants').val(findGetParameter("maxoccupants"));
+    checkin = findGetParameter("start");
+    checkout = findGetParameter("end");
+    numoccupants = findGetParameter("maxoccupants");
+
 
     filter();
 
