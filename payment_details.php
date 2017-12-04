@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -10,7 +11,10 @@
 	<body>
 		<?php
 			$header_active_link = "";
-			include "partials/navbar.php";
+            include "partials/navbar.php";
+            
+            $checkin = $_POST["checkin"];
+            $checkout = $_POST[""]
 		?>
         <div class="container">
             <div class="row">
@@ -25,7 +29,7 @@
                             </div>
                         </div>
                         <div class="panel-body">
-                            <form role="form" id="payment-form">
+                            <form role="form" id="payment-form" action="payment_confirmation.php" method="POST">
                                 <div class="row">
                                     <div class="col-xs-12">
                                         <div class="form-group">

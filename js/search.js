@@ -30,7 +30,7 @@ function roomHTML(obj) {
     var hiddenCheckin = '<input type="hidden" name="checkin" value="'+findGetParameter("start")+'" />';
     var hiddenCheckout = '<input type="hidden" name="checkout" value="'+findGetParameter("end")+'" />';
     var hiddenNum = '<input type="hidden" name="numoccupants" value="'+findGetParameter("maxoccupants")+'" />';
-    var hiddenParams = hiddenID+hiddenCheckin+hiddenCheckout;
+    var hiddenParams = hiddenID+hiddenCheckin+hiddenCheckout+hiddenNum;
     var submitBtn = '<form action="details.php" method="GET"><button class="btn btn-primary">Book Now</button>' + hiddenParams + '</form>';
     var editBtn = '<form action="editroom.php" method="GET"><button class="btn btn-default">Edit</button>' + hiddenID + '</form>';
     var removeBtn = '<form action="removeroom.php"><button class="btn btn-default">Remove</button>' + hiddenID + '</form>';
@@ -165,9 +165,24 @@ $(document).ready(function () {
         $(this).datepicker();
     });
 
+    $('input[name="start"]').val(findGetParameter("start"));
+    $('input[name="end"]').val(findGetParameter("end"));
+    $('input[name="maxoccupants"]').val(findGetParameter("maxoccupants"));
+
     filter();
 
     $("#apply-filters").click(function () {
+        filter();
+    });
+
+    $("#clear-filters").click(function() {
+        $(".sidebar input").each(function() {
+            if(this.type == 'checkbox' || this.type == 'radio') {
+                this.checked = false;
+            } else if(this.type == 'text') {
+                $(this).val('');
+            }
+        });
         filter();
     });
 

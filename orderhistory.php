@@ -20,7 +20,7 @@
 					if($email) {
 						echo '<table class="table table-striped table-condensed">';
 						echo '<tr><th>Room</th><th>Reservation placed</th><th>Stay began</th><th>Stay Ended</th><th>Cost</th></tr>';
-						$resQuery = "SELECT * FROM reservation WHERE useremail = '$email'";
+						$resQuery = "SELECT * FROM reservation WHERE useremail = '$email' ORDER BY timeplaced DESC";
 						$resResult = mysqli_query($link, $resQuery);
 						while($row = mysqli_fetch_array($resResult)) {
 							echo '<tr>';

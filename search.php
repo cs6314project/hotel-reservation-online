@@ -1,8 +1,9 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
 		<?php
-			$page_title = "Wishlist";
+			$page_title = "Search";
 			include "partials/header.php";
 		?>
 		<link rel="stylesheet" href="css/datepicker.css">
@@ -55,7 +56,8 @@
 						</li>
 					</ul>
 
-					<button id="apply-filters" class="btn btn-default">Apply Filters</button>
+					<button id="apply-filters" class="btn btn-primary">Apply Filters</button>
+					<button id="clear-filters" class="btn btn-default">Clear Filters</button>
 				</div>
 			</div>
 

@@ -39,6 +39,7 @@
     }
 
     if($added) $roomQuery .= $queryadditions;
+    $roomQuery .= " ORDER BY price ASC";
     //echo $roomQuery;
     
     $result = mysqli_query($link, $roomQuery);
