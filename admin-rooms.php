@@ -39,7 +39,7 @@
 					<div class="book-form">
 						<p>$<?=$row_rooms["price"] ?>/night</p>
 						<a href="editRoom.php?roomid=<?=$row_rooms["id"] ?>" class="btn btn-primary">Edit Room</a><br><br>
-						<a href="deleteRoom.php?roomid=<?=$row_rooms["id"] ?>" class="btn btn-danger">Delete Room</a>
+						<button onclick="pageAdminRooms.openDeleteModal(<?=$row_rooms["id"] ?>, '<?=$row_rooms["name"] ?>');" class="btn btn-danger">Delete Room</button>
 					</div>
 					<h3><?=$row_rooms["name"] ?></h3>
 					<p><?=$row_rooms["numbeds"] ?> <?=$row_rooms["bedsize"] ?> size beds, up to <?=$row_rooms["maxoccupants"] ?> occupants</p>
@@ -65,14 +65,36 @@
 			</div>
 		</div>
 
-		<a id="stickyBtnAddRoom" href="addRoom.php" class="btn btn-success btn-lg">
+		<a id="stickyBtnAddRoom" href="admin-add-room.php" class="btn btn-success btn-lg">
 			<i class="glyphicon glyphicon-plus"></i> Add Room
 		</a>
+
+		<div class="modal fade" tabindex="-1" role="dialog" id="deleteModal">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<h4 class="modal-title" id="deleteModalTitle">Delete Room?</h4>
+					</div>
+					<form action="admin-delete-room.php" method="POST">
+						<div class="modal-body">
+							<p>Do you want to delete the Room named, <span id="deleteModalRoomName"></span>?</p>
+							<input type="hidden" id="deleteModalRoomId" name="roomid">
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+							<button type="submit" class="btn btn-danger">Delete Room</button>
+						</div>
+					</form>
+				</div><!-- /.modal-content -->
+			</div><!-- /.modal-dialog -->
+		</div><!-- /.modal -->
 		
 		<?php
 
 			closeDatabaseConnection();
 			include "partials/footer.php";
 		?>
+		<script src="js/adminRooms.js"></script>
 	</body>
 </html>
