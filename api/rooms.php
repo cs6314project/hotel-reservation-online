@@ -1,8 +1,8 @@
 <?php 
     session_start();
     $admin = false;
-    if(isset($_SESSION["admin"])) {
-        $admin = $_SESSION["admin"];
+    if(isset($_SESSION["is_admin"])) {
+        $admin = $_SESSION["is_admin"];
     }
 
     $start = $_GET["start"];
