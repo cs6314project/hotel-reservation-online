@@ -16,7 +16,10 @@
     $added = false;
     
     if(isset($start) && isset($end) && $start != null && $end != null) {
-        if($added) $queryadditions .= " AND ";
+        if($start > $end) {
+            echo '{"isadmin": false, "rooms": []}';
+            exit();
+        }
         $overlaps = " ('$start' BETWEEN checkin AND checkout) OR ('$end' BETWEEN checkin AND checkout) ";
         $encloses = " ('$start' < checkin AND '$end' > checkout)";
         $queryadditions .= " (SELECT COUNT(1) FROM reservation WHERE roomid = id AND (" . $overlaps . " OR " . $encloses . ")) = 0 ";

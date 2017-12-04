@@ -13,8 +13,6 @@
 			$header_active_link = "";
             include "partials/navbar.php";
             
-            $checkin = $_POST["checkin"];
-            $checkout = $_POST[""]
 		?>
         <div class="container">
             <div class="row">
@@ -30,6 +28,10 @@
                         </div>
                         <div class="panel-body">
                             <form role="form" id="payment-form" action="payment_confirmation.php" method="POST">
+                                <input type="hidden" name="checkin" value="<?php echo $_POST["checkin"]; ?>" />
+                                <input type="hidden" name="checkout" value="<?php echo $_POST["checkout"]; ?>" />
+                                <input type="hidden" name="cost" value="<?php echo $_POST["cost"]; ?>" />
+                                <input type="hidden" name="roomid" value="<?php echo $_POST["roomid"]; ?>" />
                                 <div class="row">
                                     <div class="col-xs-12">
                                         <div class="form-group">
