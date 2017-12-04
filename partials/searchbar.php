@@ -8,8 +8,8 @@
             </div>
         </div>
         <div class="form-group">
-            <input id="maxoccupants" name="maxoccupants" type="text" class="form-control" placeholder="# Guests" style="width: 100px">
+            <input id="maxoccupants" name="maxoccupants" type="number" class="form-control" placeholder="# Guests" style="width: 100px">
         </div>
         <input id="searchbtn" type="submit" value="Search" class="btn btn-default">
-    </form>
+	</form>
 </div>

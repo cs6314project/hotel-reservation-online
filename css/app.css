@@ -77,7 +77,7 @@ body {
 	position: fixed;
 	/* display: block; */
 	bottom: 20px;
-	right: 25px;
+	left: 30px;
 }
 
 .account-img-modal{
@@ -107,6 +107,11 @@ body {
     max-height: 200px;
     width: auto;
     height: auto;
+}
+
+.book-form .btn {
+    margin-top: 5px;
+    margin-bottom: 5px;
 }
 
 /* Neelabh's Additions - End */

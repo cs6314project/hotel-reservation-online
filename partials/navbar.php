@@ -15,8 +15,9 @@
 
 		<!-- Collect the nav links, forms, and other content for toggling -->
 		<div class="collapse navbar-collapse" id="roomNavbar">
+			
 			<ul class="nav navbar-nav">
-				<!-- <li><a href=""></a></li> -->
+				
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
 
@@ -30,10 +31,11 @@
 				</li>
 
 				<?php } else { ?>
-
+					
 				<li>
 					<a>What's Up, <?=$_SESSION["first_name"]?></a>
 				</li>
+				
 				<li class="dropdown">
 					
 					<?php if ($_SESSION['is_admin'] == 1) { ?>

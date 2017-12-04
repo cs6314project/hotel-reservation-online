@@ -48,7 +48,7 @@
 
 			if ($result_update_deleted) {
 				echo "<div class='text-center'><h3>Room deletetion successfull</h3><br>";
-				echo "<a href='admin-rooms.php'><- Go Back</a></div>";
+				echo "<a href='search.php'><- Go Back</a></div>";
 			} else {
 				echo "Could not Delete Room";
 			}
