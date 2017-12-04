@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -13,6 +14,7 @@
 		<div class="container-fluid">
 			<?php 
 				include "partials/navbar.php";
+				include "partials/notifications.php";
 				include "partials/searchbar.php";
 			?>
 

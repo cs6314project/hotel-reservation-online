@@ -73,6 +73,13 @@ body {
     color: #b71c1c;
 }
 
+#stickyBtnAddRoom {
+	position: fixed;
+	/* display: block; */
+	bottom: 20px;
+	right: 25px;
+}
+
 /* Neelabh's Additions - End */
 
 /* Veronica's Additions - Start */

@@ -130,7 +130,7 @@ function filter() {
 }
 
 function displayPage() {
-    $("#searchresults").empty()
+    $("#searchresults").empty();
     $("#pagebuttons").empty();
     if(rooms.length == 0) {
         var noresults = '<p>Sorry, there are no results</p>';
@@ -181,19 +181,20 @@ $(document).ready(function () {
             "roomid": $(this).data("roomid")
         };
         $.post("api/wishlist.php", data,
-            function (data, textStatus, jqXHR) {
-                console.log(data);
-                console.log(originalWishstate);
-                if (originalWishstate == true) {
-                    $(element).data("wishstate", false);
-                    $(element).removeClass("fa-heart");
-                    $(element).addClass("fa-heart-o");
-                } else if (originalWishstate == false) {
-                    $(element).data("wishstate", true);
-                    $(element).removeClass("fa-heart-o");
-                    $(element).addClass("fa-heart");
-                }
-            }
+			function (data, textStatus, jqXHR) {
+				data = JSON.parse(data);
+				if(data.status == 1) {
+					$(element).data("wishstate", false);
+					$(element).removeClass("fa-heart");
+					$(element).addClass("fa-heart-o");
+					app.showNotificationFailure(data.message);
+				} else if(data.status == 3) {
+					$(element).data("wishstate", true);
+					$(element).removeClass("fa-heart-o");
+					$(element).addClass("fa-heart");
+					app.showNotificationSuccess(data.message);
+				}
+			}
         );
     });
 });

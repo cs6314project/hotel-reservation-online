@@ -48,13 +48,7 @@
 					</a>
 					<ul class="dropdown-menu">
 						<li>
-							<a href="rooms.php?display_rooms=all&todo=add">Add Room</a>
-						</li>
-						<li>
-							<a href="rooms.php?display_rooms=all&todo=edit">Edit Room</a>
-						</li>
-						<li>
-							<a href="rooms.php?display_rooms=all&todo=delete">Delete Room</a>
+							<a href="rooms.php?display_rooms=all&todo=add">Add/Edit/Delete Rooms</a>
 						</li>
 						<li role="separator" class="divider"></li>
 						<li>
@@ -69,7 +63,7 @@
 					</a>
 					<ul class="dropdown-menu">
 						<li>
-							<a href="wishlist.php">My Wishlist</a>
+							<a href="favorites.php">My Wishlist</a>
 						</li>
 						<li>
 							<a href="orderhistory.php">My purchase history</a>
