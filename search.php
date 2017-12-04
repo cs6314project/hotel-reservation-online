@@ -18,16 +18,22 @@
 
 			<div class="col-md-3">
 				<div data-spy="affix" data-offset-top="60" class="sidebar">
-					<p>Room amenities</p>
+					<h4>Search filters</h4>
+					<p>Room features:</p>
 
 					<input type="checkbox" id="wifi" name="wifi" />
 					<label for="wifi">Wireless internet</label>
 					<br />
-					<input type="checkbox" id="smoking" name="smoking" />
-					<label for="smoking">Allows smoking</label>
-					<br />
 					<input type="checkbox" id="tv" name="tv" />
-					<label for="tv">Has television</label>
+					<label for="tv">Premium TV channels</label>
+					<br />
+
+					<p>Smoking options:</p>
+					<input type="radio" name="smoking" value="nosmoking"/>
+					<label for="smoking">Non-smoking</label>
+					<br />
+					<input type="radio" name="smoking" value="smoking"/>
+					<label for="smoking">Smoking</label>
 					<br />
 
 					<p>Sort:</p>
@@ -49,7 +55,7 @@
 						</li>
 					</ul>
 
-					<button id="apply-filters" class="btn btn-primary">Apply Filters</button>
+					<button id="apply-filters" class="btn btn-default">Apply Filters</button>
 				</div>
 			</div>
 

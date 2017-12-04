@@ -26,10 +26,14 @@ function pageButtons() {
 function roomHTML(obj) {
     var img = '<img src="img/room'+obj.id+'/1.jpg" alt="' + obj.name + '"/>';
     var price = '<p>$' + obj.price + '/night</p>';
-    var hiddenParam = '<input type="hidden" name="roomid" value="' + obj.id + '" />';
-    var submitBtn = '<form action="details.php" method="GET"><button class="btn btn-primary">Book Now</button>' + hiddenParam + '</form>';
-    var editBtn = '<form action="editroom.php" method="GET"><button class="btn btn-default">Edit</button>' + hiddenParam + '</form>';
-    var removeBtn = '<form action="removeroom.php"><button class="btn btn-default">Remove</button>' + hiddenParam + '</form>';
+    var hiddenID = '<input type="hidden" name="roomid" value="' + obj.id + '" />';
+    var hiddenCheckin = '<input type="hidden" name="checkin" value="'+findGetParameter("start")+'" />';
+    var hiddenCheckout = '<input type="hidden" name="checkout" value="'+findGetParameter("end")+'" />';
+    var hiddenNum = '<input type="hidden" name="numoccupants" value="'+findGetParameter("maxoccupants")+'" />';
+    var hiddenParams = hiddenID+hiddenCheckin+hiddenCheckout;
+    var submitBtn = '<form action="details.php" method="GET"><button class="btn btn-primary">Book Now</button>' + hiddenParams + '</form>';
+    var editBtn = '<form action="editroom.php" method="GET"><button class="btn btn-default">Edit</button>' + hiddenID + '</form>';
+    var removeBtn = '<form action="removeroom.php"><button class="btn btn-default">Remove</button>' + hiddenID + '</form>';
     var favBtn = "";
     if (obj.favorite != null) {
         if (obj.favorite)
@@ -53,7 +57,7 @@ function roomHTML(obj) {
     });
     features = '<ul>' + features + '</ul>';
     var desc = form + name + beds + features;
-    var html = '<div class="row room center-block">' + img + desc + favBtn + '</div>';
+    var html = '<div class="room center-block">' + img + desc + favBtn + '</div>';
     return html;
 }
 
@@ -81,11 +85,20 @@ function filter() {
     rooms = [];
     var wifi = $("#wifi:checked").val();
     var tv = $("#tv:checked").val();
-    var smoking = $("#smoking:checked").val();
+    var smokingfilter = $('input[name="smoking"]:checked').val();
+    var smoking = "";
+    var nosmoking = "";
+    if(smokingfilter) {
+        if(smokingfilter=="smoking")
+            smoking = "on";
+        else if(smokingfilter=="nosmoking") 
+            nosmoking = "on";
+    }
     var filters = {
         "wifi": wifi,
         "tv": tv,
-        "smoking": smoking
+        "smoking": smoking,
+        "nosmoking": nosmoking
     };
     var sort = $('input[name="sort"]:checked').val();
     var pricemin = $("#price-min").val();
