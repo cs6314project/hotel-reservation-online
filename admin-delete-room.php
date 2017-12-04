@@ -26,7 +26,7 @@
 
 			openDatabaseConnection();
 
-			$sql_update_deleted = "UPDATE room SET deleted =1 WHERE roomid=$roomid";
+			$sql_update_deleted = "UPDATE room SET deleted=1 WHERE id=$roomid";
 			$result_update_deleted = mysqli_query($link, $sql_update_deleted);
 
 			/*$sql_remove_roomfeatures = "DELETE FROM roomfeatures WHERE roomid=$roomid";
