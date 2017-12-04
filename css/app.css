@@ -83,37 +83,57 @@ body {
 /* Neelabh's Additions - End */
 
 /* Veronica's Additions - Start */
-.carousel {
-    height: 650px;
-    margin-bottom: 60px;
+#index {
+    background-image: url("../img/homepage.jpg");
+    background-size: cover;  
+    padding-top: 0;
 }
 
-
-/* Since positioning the image, we need to help out the caption */
-
-.carousel-caption {
-    z-index: 10;
+#search-section {
+    position: relative;
+    height: 100vh;
 }
 
-
-/* Declare heights because of positioning of img element */
-
-.carousel .item {
-    height: 650px;
-    background-color: #777;
-}
-
-.carousel-inner>.item>img {
+#index-searchbar {
+    width: 700px;
+    height: 70px;
+    padding: 10px;
+  
     position: absolute;
-    top: 0;
-    left: 0;
-    min-width: 100%;
-    height: 650px;
+    top: 50%;
+    left: 50%;
+
+    /*background: white;*/
+  
+    margin: -40px 0 0 -370px;
+
 }
 
 .searchbar {
     text-align: center;
     margin-bottom: 10px;
+    background: white;
+    border-radius: 10px;
+}
+
+.sidebar {
+    padding: 15px;
+    border: 1px solid silver;
+    border-radius: 10px;
+    width: 23vw;
+}
+
+.sidebar label {
+    font-weight: normal;
+}
+
+.sidebar p {
+    margin-top: 15px;
+    font-weight: bold;
+}
+
+.sidebar ul {
+    list-style: none;
 }
 
 .form-inline {

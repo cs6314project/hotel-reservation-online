@@ -8,12 +8,18 @@
 		?>
 		<link rel="stylesheet" href="css/datepicker.css">
 	</head>
-	<body>
+	<body id="index">
 		<?php
 			$header_active_link = "about";
 			include "partials/navbar.php";
-			include "partials/searchbar.php";
 		?>
+		<div id="search-section">
+			<div id="index-searchbar">
+			<?php
+			include "partials/searchbar.php";
+			?>
+			</div>
+		</div>
 
 		<?php
 			include "partials/footer.php";
