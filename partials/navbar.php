@@ -48,7 +48,7 @@
 					</a>
 					<ul class="dropdown-menu">
 						<li>
-							<a href="rooms.php?display_rooms=all&todo=add">Add/Edit/Delete Rooms</a>
+							<a href="admin-rooms.php">Add/Edit/Delete Rooms</a>
 						</li>
 						<li role="separator" class="divider"></li>
 						<li>
@@ -63,7 +63,7 @@
 					</a>
 					<ul class="dropdown-menu">
 						<li>
-							<a href="favorites.php">My Wishlist</a>
+							<a href="favorites.php">My Favourties</a>
 						</li>
 						<li>
 							<a href="orderhistory.php">My purchase history</a>

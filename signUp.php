@@ -51,7 +51,7 @@
 						</div>
 						<div class="row form-group">
 							<div class="col-xs-12 col-md-3">
-								<label for="password">Confirm Password</label>
+								<label for="confirmPassword">Confirm Password</label>
 								<input type="password" class="form-control" id="confirmPassword" name="confirm_password" placeholder="Password" required>
 								<div class="info"></div>
 							</div>
