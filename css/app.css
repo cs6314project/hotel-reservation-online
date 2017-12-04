@@ -77,30 +77,36 @@ body {
 
 /* Veronica's Additions - Start */
 #index {
-    background-image: url("img/indexCarousel/pic1");
+    background-image: url("../img/homepage.jpg");
+    background-size: cover;  
+    padding-top: 0;
 }
 
 #search-section {
     position: relative;
-    height: 100%;
-    background-color: white;
+    height: 100vh;
 }
 
 #index-searchbar {
-    width: 900px;
-    height: 100px;
-    padding: 20px;
+    width: 700px;
+    height: 70px;
+    padding: 10px;
   
     position: absolute;
     top: 50%;
     left: 50%;
+
+    /*background: white;*/
   
-    margin: -10px 0 0 -470px;
+    margin: -40px 0 0 -370px;
+
 }
 
 .searchbar {
     text-align: center;
     margin-bottom: 10px;
+    background: white;
+    border-radius: 10px;
 }
 
 .sidebar {
