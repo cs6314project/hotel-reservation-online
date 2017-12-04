@@ -108,8 +108,8 @@ function filter() {
     var pricemax = $("#price-max").val();
     var array = [];
     var data = {
-        "start": checkin,
-        "end": checkout,
+        "start": sqlDateFormat(checkin),
+        "end": sqlDateFormat(checkout),
         "maxoccupants": numoccupants
     }
     $.getJSON("api/rooms.php", data, function (result) {
