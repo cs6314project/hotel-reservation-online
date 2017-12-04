@@ -16,12 +16,7 @@
 		<!-- Collect the nav links, forms, and other content for toggling -->
 		<div class="collapse navbar-collapse" id="roomNavbar">
 			<ul class="nav navbar-nav">
-				<li class="<?=(strcmp($header_active_link, 'about') == 0) ? 'active' : ''?>">
-					<a href="about.php">About</a>
-				</li>
-				<li class="<?=(strcmp($header_active_link, 'contact') == 0) ? 'active' : ''?>">
-					<a href="contact.php">Contact</a>
-				</li>
+				<!-- <li><a href=""></a></li> -->
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
 
