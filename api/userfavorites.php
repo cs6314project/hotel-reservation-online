@@ -4,7 +4,6 @@
     include "../partials/db_connect.php";
     openDatabaseConnection();
     $roomQuery = "SELECT * FROM Room ";
-    $email = "email@example";
     if(isset($_SESSION["email"])) {
         $email = $_SESSION["email"];
     }

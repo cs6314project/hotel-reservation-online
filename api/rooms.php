@@ -58,7 +58,6 @@
         }
         if(isset($_SESSION["email"])) {
             $email = $_SESSION["email"];
-            $email = "email@example";
             $favoritesQuery = "SELECT * FROM wishlist WHERE email = '$email' AND roomid = $id";
             $favResult = mysqli_query($link, $favoritesQuery);
             $row['favorite'] = (mysqli_num_rows($favResult)>=1);
