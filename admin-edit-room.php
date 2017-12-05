@@ -63,6 +63,27 @@
 						</div>
 						<div class="row form-group">
 							<div class="col-xs-12 col-md-3">
+							<?php
+								$path = "./img/".$row_room_data["img"];
+								$files = array_diff(scandir($path), array('.', '..', '.DS_Store'));
+								$counter = 1;
+								foreach($files as $key => $value) {
+							?>
+							<div class="checkbox">
+								<label>
+									<input type="checkbox" id="img<?=$counter ?>" name="fileList[]" value="<?=$value ?>"> <?=$value ?>
+								</label>
+							</div>
+							<?php
+									$counter++;
+								}
+							?>
+							<input name="counterForOriginalFiles" type="hidden" value="<?=($counter-1) ?>">
+							</div>
+						</div>
+							
+						<div class="row form-group">
+							<div class="col-xs-12 col-md-3">
 								<label for="price">Price/Night in Dollars($)</label>
 								<input type="number" class="form-control" id="price" name="price" placeholder="Price" value="<?=$row_room_data["price"] ?>" required>
 								<div class="info"></div>

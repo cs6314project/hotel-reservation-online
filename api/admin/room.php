@@ -27,8 +27,6 @@
 		$totalBytes = $bytes * $KB;
 		$UploadFolder = "img";
 
-		$counter = 0;
-
 		if($operation == "add") {
 			// Add Room
 			$sql_add_room = "INSERT INTO room(name, price, numbeds, bedsize, maxoccupants, description) VALUES('$name', $price, $numbeds, '$bedsize', $maxoccupants, '$description')";
@@ -72,6 +70,8 @@
 						if($result_update_img_folder) {
 							// echo "<br>Updated. ";
 							$response = array("status" => 1, "message" => "Updated");
+
+							$counter = 0;
 
 							foreach($_FILES["files"]["tmp_name"] as $key=>$tmp_name){
 								$temp = $_FILES["files"]["tmp_name"][$key];
@@ -122,13 +122,20 @@
 				echo "<br>Could not insert";
 			}
 		} else if($operation == "edit") {
+			$modifiedfileList = $_POST["fileList"];
+			$counterForOriginalFiles = $_POST["counterForOriginalFiles"];
+
 			$roomid = $_POST["roomid"];
+
 			$sql = "UPDATE room SET name='$name', price=$price, numbeds=$numbeds, bedsize='$bedsize', maxoccupants=$maxoccupants, description='$description'  WHERE id=".$roomid;
+
 			$result_update = mysqli_query($link, $sql);
+
 			$wifiQ = "INSERT IGNORE INTO roomfeatures (roomid, feature) VALUES ($roomid, 'wifi')";
 			$tvQ = "INSERT IGNORE INTO roomfeatures (roomid, feature) VALUES ($roomid, 'tv')";
 			$smQ = "INSERT IGNORE INTO roomfeatures (roomid, feature) VALUES ($roomid, 'smoking')";
 			$nsmQ = "INSERT IGNORE INTO roomfeatures (roomid, feature) VALUES ($roomid, 'nosmoking')";
+
 			if(isset($wifi) && $wifi=="on")
 				mysqli_query($link, $wifiQ);
 			else 
@@ -146,23 +153,69 @@
 				} else {
 					mysqli_query($link, $nsmQ);
 					mysqli_query($link, "DELETE FROM roomfeatures WHERE roomid=$roomid AND feature='smoking'");
+				}
 			}
-		}
 
 			if ($result_update) {
 				$response = array("status" => 1, "message" => "Updated");
 			} else {
 				$response = array("status" => 1, "message" => "NOt Updated", "sql" => $sql);
 			}
+
+			$folder_name = "room".$roomid;
+			$path = "../../img/".$folder_name;
+
+			$files = array_diff(scandir($path), array('.', '..', '.DS_Store'));
+			
+			$toRemove = array_diff($files, $modifiedfileList);
+			
+			foreach($toRemove as $key => $value) {
+				unlink($path."/".$value);
+			}
+
+			$files_counter_calc = array_diff(scandir($path, 1), array('.', '..', '.DS_Store'));
+
+			$counter = explode(".", $files_counter_calc[0])[0];
+
+			foreach($_FILES["files"]["tmp_name"] as $key=>$tmp_name){
+				$temp = $_FILES["files"]["tmp_name"][$key];
+				$name = $_FILES["files"]["name"][$key];
+		
+				$path_parts = pathinfo($name);
+				
+				if(empty($temp))
+				{
+					break;
+				}
+				
+				$counter++;
+				$UploadOk = true;
+				
+				if($_FILES["files"]["size"][$key] > $totalBytes)
+				{
+					$UploadOk = false;
+					array_push($errors, $name." file size is larger than the 1 MB.");
+				}
+				
+				$ext = pathinfo($name, PATHINFO_EXTENSION);
+				if(in_array($ext, $extension) == false){
+					$UploadOk = false;
+					array_push($errors, $name." is invalid file type.");
+				}
+				
+				if(file_exists($path."/".$counter.".".$path_parts['extension']) == true){
+					$UploadOk = false;
+					array_push($errors, $name." file is already exist.");
+				}
+				
+				if($UploadOk == true){
+					move_uploaded_file($temp,$path."/".$counter.".".$path_parts['extension']);
+					array_push($uploadedFiles, $name);
+				}
+			}
+
 		}
 
-		// Delete Room
-
-		// Edit Room
-
-		// Get All Rooms
-	// } else {
-		// Get Rooms
 		closeDatabaseConnection();
 	}
 
