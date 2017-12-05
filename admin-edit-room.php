@@ -51,6 +51,13 @@
 						</div>
 						<div class="row form-group">
 							<div class="col-xs-12 col-md-3">
+								<label for="imagesInput">Select files to upload:</label>
+								<input type="file" id="imagesInput" name="files[]" multiple="multiple">
+								<p class="help-block"><span class="label label-info">Note:</span> Please, Select the only images (.jpg, .jpeg, .png, .gif) to upload with the size of 100KB only.</p>
+							</div>
+						</div>
+						<div class="row form-group">
+							<div class="col-xs-12 col-md-3">
 								<label for="price">Price/Night in Dollars($)</label>
 								<input type="number" class="form-control" id="price" name="price" placeholder="Price" value="<?=$row_room_data["price"] ?>" required>
 								<div class="info"></div>
@@ -84,7 +91,7 @@
 						<div class="row form-group">
 							<div class="col-xs-12 col-md-3">
 								<label for="description">Description</label>
-								<textarea name="description" id="description" rows="8" class="form-control" value="<?=$row_room_data["description"] ?>" required></textarea>
+								<textarea name="description" id="description" rows="8" class="form-control" required><?=$row_room_data["description"] ?></textarea>
 								<div class="info"></div>
 							</div>
 						</div>

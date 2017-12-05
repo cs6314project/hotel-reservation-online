@@ -8,6 +8,8 @@
 			include "partials/header.php";
 		?>
         <link rel='stylesheet' href='css/datepicker.css' />
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <script src="https://use.fontawesome.com/5ca19d8c97.js" defer></script>
         </script>
 </head>
 
@@ -32,40 +34,51 @@
 			while($frow = mysqli_fetch_assoc($featureresult)) {
 					$features[] = $frow["feature"];
 			}
-			closeDatabaseConnection();
+            closeDatabaseConnection();
+            
+            $featureStrings = array(
+                "wifi" => '<i class="material-icons md-18">wifi</i>Free Wireless Internet',
+                "tv" => '<i class="material-icons md-18">tv</i>Premium TV channels',
+                "smoking" => '<i class="material-icons md-18">smoking_rooms</i>Allows Smoking',
+                "nosmoking" => '<i class="material-icons md-18">smoke_free</i>Non-smoking'
+            );
 		?>
-        <h1>
+        <h1 class="room-header">
             <?=$row["name"] ?>
         </h1>
 
         <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                <?php 
+                    $dir = "img/room$id";
+                    $images = scandir($dir);
+                    $first = true;
+                    $indicators = "";
+                    $items = "";
+                    $i = 0;
+                    foreach($images as $img) {
+                        if(!($img == ".." || $img == ".")) {
+                            if($first) {
+                                $first = false;
+                                $indicators .= '<li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>';
+                                $items .= '<div class="item active">';
+                            }
+                            else {
+                                $indicators .= '<li data-target="#carousel-example-generic" data-slide-to="'.$i.'"></li>';
+                                $items .= '<div class="item">'; 
+                            }
+                            $items .= '<img src="'.$dir.'/'.$img.'" />';
+                            $items .= '</div>';
+                            $i++;
+                        }
+                    }
+                ?>
             <!-- Indicators -->
             <ol class="carousel-indicators">
-                <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-                <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-                <li data-target="#carousel-example-generic" data-slide-to="2"></li>
-            </ol>
-
+				<?php echo $indicators; ?>
+			</ol>
             <!-- Wrapper for slides -->
             <div class="carousel-inner" role="listbox">
-                <div class="item active">
-                    <img src='img/hotel4.jpg'>
-                    <div class="carousel-caption">
-                        Outdoor Pool View
-                    </div>
-                </div>
-                <div class="item">
-                    <img src='img/hotel5.jpg'>
-                    <div class="carousel-caption">
-                        Estrella Bedrooms
-                    </div>
-                </div>
-                <div class="item">
-                    <img src='img/hotel6.jpg'>
-                    <div class="carousel-caption">
-                        Underwater Rooms
-                    </div>
-                </div>
+                <?php echo $items; ?>
             </div>
 
             <!-- Controls -->
@@ -80,13 +93,13 @@
         </div>
         <div class='details'>
             <!-- Nav tabs -->
-            <ul class="nav nav-tabs" role="tablist">
+            <ul class="nav nav-tabs section-tabs" role="tablist">
                 <li role="presentation" class="active">
                     <a href="#home" aria-controls="home" role="tab" data-toggle="tab">Description</a>
                 </li>
-                <li role="presentation">
+                <!--<li role="presentation">
                     <a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Location</a>
-                </li>
+                </li>-->
                 <li role="presentation">
                     <a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Amenities</a>
                 </li>
@@ -97,14 +110,14 @@
                 <div role="tabpanel" class="tab-pane active" id="home">
                     <?php echo $row["description"]; ?>
                 </div>
-                <div role="tabpanel" class="tab-pane" id="messages">
+                <!--<div role="tabpanel" class="tab-pane" id="messages">
                     Location details such as address, nearby places, etc.
-                </div>
+                </div>-->
                 <div role="tabpanel" class="tab-pane" id="settings">
                     <ul>
                         <?php 
 						foreach($features as $feature) {
-							echo "<li>$feature</li>";
+							echo "<li>$featureStrings[$feature]</li>";
 						}
 						?>
                     </ul>
@@ -135,7 +148,7 @@
                                                 <div class="input-group">
                                                     <input type="text" class="form-control" id="checkin" name="checkin" required />
                                                     <span class="input-group-addon">
-                                                        <i class="fa fa-credit-card"></i>
+                                                        <i class="fa fa-calendar"></i>
                                                     </span>
                                                 </div>
                                             </div>
@@ -148,7 +161,7 @@
                                                 <div class="input-group">
                                                     <input type="text" class="form-control" id="checkout" name="checkout" required />
                                                     <span class="input-group-addon">
-                                                        <i class="fa fa-credit-card"></i>
+                                                        <i class="fa fa-calendar"></i>
                                                     </span>
                                                 </div>
                                             </div>
@@ -257,6 +270,10 @@
                     $("#checkin").val(findGetParameter("checkin"));
                     $("#checkout").val(findGetParameter("checkout"));
                     $("#availability").val(findGetParameter("numoccupants"));
+
+                    $('.carousel').carousel({
+			            interval: 10000
+		            });
                 });
 
                 //for number of days calculation
