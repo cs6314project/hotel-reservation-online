@@ -267,8 +267,12 @@
                 }
 
                 $(document).ready(function () {
-                    $("#checkin").val(findGetParameter("checkin"));
-                    $("#checkout").val(findGetParameter("checkout"));
+                    var ci = findGetParameter("checkin");
+                    var co = findGetParameter("checkout");
+                    if(ci)
+                        $("#checkin").val(ci);
+                    if(co)
+                        $("#checkout").val(co);
                     $("#availability").val(findGetParameter("numoccupants"));
 
                     $('.carousel').carousel({

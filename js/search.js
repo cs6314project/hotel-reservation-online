@@ -30,9 +30,9 @@ function roomHTML(obj) {
     var img = '<img src="img/room'+obj.id+'/1.jpg" alt="' + obj.name + '"/>';
     var price = '<p>$' + obj.price + '/night</p>';
     var hiddenID = '<input type="hidden" name="roomid" value="' + obj.id + '" />';
-    var hiddenCheckin = '<input type="hidden" name="checkin" value="'+checkin+'" />';
-    var hiddenCheckout = '<input type="hidden" name="checkout" value="'+checkout+'" />';
-    var hiddenNum = '<input type="hidden" name="numoccupants" value="'+maxoccupants+'" />';
+    var hiddenCheckin = '<input type="hidden" name="checkin" value="'+(checkin?checkin:"")+'" />';
+    var hiddenCheckout = '<input type="hidden" name="checkout" value="'+(checkout?checkout:"")+'" />';
+    var hiddenNum = '<input type="hidden" name="numoccupants" value="'+(numOccupants?numOccupants:"")+'" />';
     var hiddenParams = hiddenID+hiddenCheckin+hiddenCheckout+hiddenNum;
     var submitBtn = '<form action="product_details.php" method="GET"><button class="btn btn-primary">Book Now</button>' + hiddenParams + '</form>';
     var editBtn = '<form action="admin-edit-room.php" method="POST"><button class="btn btn-default">Edit</button>' + hiddenID + '</form>';
@@ -82,6 +82,7 @@ function sqlDateFormat(date) {
         var arr = date.split("/");
         return arr[2] + "-" + arr[0] + "-" + arr[1];
     }
+    else return "";
 }
 
 function filter() {
