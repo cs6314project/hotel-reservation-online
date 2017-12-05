@@ -14,6 +14,10 @@
 		$bedsize = $_POST["bedsize"];
 		$maxoccupants = $_POST["maxoccupants"];
 		$description = $_POST["description"];
+
+		$wifi = $_POST["wifi"];
+		$tv = $_POST["tv"];
+		$smoking = $_POST["smoking"];
 	
 		$errors = array();
 		$uploadedFiles = array();
@@ -35,6 +39,19 @@
 				// echo "Inserted. ";
 	
 				$new_insert_id = mysqli_insert_id($link);
+
+				if(isset($wifi) && $wifi=="on")
+					mysqli_query($link, "INSERT INTO roomfeatures (roomid, feature) VALUES ($new_insert_id, 'wifi')");
+				if(isset($tv) && $tv=="on")
+					mysqli_query($link, "INSERT INTO roomfeatures (roomid, feature) VALUES ($new_insert_id, 'tv')");
+				
+				if(isset($smoking)) {
+					if($smoking="smoking") {
+						mysqli_query($link, "INSERT INTO roomfeatures (roomid, feature) VALUES ($new_insert_id, 'smoking')");
+					} else {
+						mysqli_query($link, "INSERT INTO roomfeatures (roomid, feature) VALUES ($new_insert_id, 'nosmoking')");
+					}
+				}
 				// printf ("New Record has id %d.\n", $new_insert_id);
 	
 				// Create a folder in img
@@ -108,6 +125,29 @@
 			$roomid = $_POST["roomid"];
 			$sql = "UPDATE room SET name='$name', price=$price, numbeds=$numbeds, bedsize='$bedsize', maxoccupants=$maxoccupants, description='$description'  WHERE id=".$roomid;
 			$result_update = mysqli_query($link, $sql);
+			$wifiQ = "INSERT IGNORE INTO roomfeatures (roomid, feature) VALUES ($roomid, 'wifi')";
+			$tvQ = "INSERT IGNORE INTO roomfeatures (roomid, feature) VALUES ($roomid, 'tv')";
+			$smQ = "INSERT IGNORE INTO roomfeatures (roomid, feature) VALUES ($roomid, 'smoking')";
+			$nsmQ = "INSERT IGNORE INTO roomfeatures (roomid, feature) VALUES ($roomid, 'nosmoking')";
+			if(isset($wifi) && $wifi=="on")
+				mysqli_query($link, $wifiQ);
+			else 
+				mysqli_query($link, "DELETE FROM roomfeatures WHERE roomid=$roomid AND feature='wifi'");
+
+			if(isset($tv) && $tv=="on")
+				mysqli_query($link, $tvQ);
+			else
+				mysqli_query($link, "DELETE FROM roomfeatures WHERE roomid=$roomid AND feature='tv'");
+		
+			if(isset($smoking)) {
+				if($smoking=="smoking") {
+					mysqli_query($link, $smQ);
+					mysqli_query($link, "DELETE FROM roomfeatures WHERE roomid=$roomid AND feature='nosmoking'");
+				} else {
+					mysqli_query($link, $nsmQ);
+					mysqli_query($link, "DELETE FROM roomfeatures WHERE roomid=$roomid AND feature='smoking'");
+			}
+		}
 
 			if ($result_update) {
 				$response = array("status" => 1, "message" => "Updated");

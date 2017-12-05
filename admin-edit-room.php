@@ -36,6 +36,11 @@
 
 				if($result_room_data->num_rows > 0) {
 					while ($row_room_data = mysqli_fetch_assoc($result_room_data)) {
+						$fQuery = "SELECT feature FROM roomfeatures WHERE roomid=$roomid";
+						$fResult = mysqli_query($link, $fQuery);
+						$features = array();
+						while($featureArr = mysqli_fetch_assoc($fResult))
+							$features[] = $featureArr["feature"];
 			?>
 			<div class="row">
 				<div class="col-xs-12">
@@ -86,6 +91,24 @@
 								<label for="maxoccupants">Maximum Occupants</label>
 								<input type="number" class="form-control" id="maxoccupants" name="maxoccupants" placeholder="Max" value="<?=$row_room_data["maxoccupants"] ?>" required>
 								<div class="info"></div>
+							</div>
+						</div>
+						<div class="row form-group">
+							<div class="col-xs-12 col-md-3">
+							<input type="checkbox" id="wifi" name="wifi" <?php if(in_array("wifi", $features)) echo 'checked'; ?>/>
+								<label for="wifi">Wireless internet</label>
+								<br />
+								<input type="checkbox" id="tv" name="tv" <?php if(in_array("tv", $features)) echo 'checked'; ?>/>
+								<label for="tv">Premium TV channels</label>
+								<br />
+
+								<p>Smoking options:</p>
+								<input type="radio" name="smoking" value="nosmoking" <?php if(in_array("nosmoking", $features)) echo 'checked'; ?>/>
+								<label for="smoking">Non-smoking</label>
+								<br />
+								<input type="radio" name="smoking" value="smoking" <?php if(in_array("smoking", $features)) echo 'checked'; ?>/>
+								<label for="smoking">Smoking</label>
+								<br />
 							</div>
 						</div>
 						<div class="row form-group">
