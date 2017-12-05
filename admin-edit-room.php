@@ -71,6 +71,7 @@
 							?>
 							<div class="checkbox">
 								<label>
+									<img src="<?=$path."/".$value ?>" width="100" height="100">
 									<input type="checkbox" id="img<?=$counter ?>" name="fileList[]" value="<?=$value ?>"> <?=$value ?>
 								</label>
 							</div>
