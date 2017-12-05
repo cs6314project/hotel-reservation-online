@@ -50,6 +50,7 @@
 	while($row = mysqli_fetch_assoc($result)) {
         //*            
         $id = $row['id'];
+        $photo = array_diff(scandir("../img/room$id"), array(".", "..", ".DS_Store"));
         $featureQuery = "SELECT feature FROM roomfeatures WHERE roomid = $id;";
         $featureResult = mysqli_query($link, $featureQuery);
         $features = array();
@@ -63,6 +64,7 @@
             $row['favorite'] = (mysqli_num_rows($favResult)>=1);
         }
         $row['features'] = $features;
+        $row['photo'] = $photo[2];
         $rooms[] = $row;
         //*/
     }

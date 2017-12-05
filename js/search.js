@@ -27,7 +27,7 @@ function pageButtons() {
 }
 
 function roomHTML(obj) {
-    var img = '<img src="img/room'+obj.id+'/1.jpg" alt="' + obj.name + '"/>';
+    var img = '<img src="img/room'+obj.id+'/'+obj.photo+ '" alt="' + obj.name + '"/>';
     var price = '<p>$' + obj.price + '/night</p>';
     var hiddenID = '<input type="hidden" name="roomid" value="' + obj.id + '" />';
     var hiddenCheckin = '<input type="hidden" name="checkin" value="'+(checkin?checkin:"")+'" />';

@@ -12,6 +12,7 @@
     $rooms = array();
 	while($row = mysqli_fetch_assoc($result)) {          
         $id = $row['id'];
+        $photo = array_diff(scandir("../img/room$id"), array(".", "..", ".DS_Store"));
         $isFavorite = false;
         $favoritesQuery = "SELECT * FROM wishlist WHERE email = '$email' AND roomid = $id";
         $favResult = mysqli_query($link, $favoritesQuery);
@@ -25,6 +26,7 @@
                 $features[] = $feature[0];
             }
             $row['features'] = $features;
+            $row['photo'] = $photo[2];
             $rooms[] = $row;
         }
     }
