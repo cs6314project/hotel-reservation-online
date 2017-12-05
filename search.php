@@ -70,9 +70,12 @@
 
 		</div>
 
+		<?php if ($_SESSION["is_admin"]) { ?>
 		<a id="stickyBtnAddRoom" href="admin-add-room.php" class="btn btn-success btn-lg">
 			<i class="glyphicon glyphicon-plus"></i> Add Room
-		</a>
+		</a> 
+		
+		?> <?php } ?>
 
 		<?php
 			include "partials/footer.php";

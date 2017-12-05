@@ -63,6 +63,7 @@
 						</div>
 						<div class="row form-group">
 							<div class="col-xs-12 col-md-3">
+							<p>Check photos to keep: </p>
 							<?php
 								$path = "./img/".$row_room_data["img"];
 								$files = array_diff(scandir($path), array('.', '..', '.DS_Store'));

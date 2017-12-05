@@ -45,7 +45,7 @@ function roomHTML(obj) {
             favBtn = '<i data-roomid="' + obj.id + '" data-wishstate="' + obj.favorite + '" class="fa fa-heart-o fa-2x favbtn"></i>';
     }
     var form = '<div class="book-form">' + price + submitBtn;
-    if (isAdmin) {
+    if (isAdmin==1) {
         form += editBtn + removeBtn;
     }
     form += '</div>';
