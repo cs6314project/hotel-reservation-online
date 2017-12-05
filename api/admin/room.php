@@ -123,6 +123,7 @@
 			}
 		} else if($operation == "edit") {
 			$modifiedfileList = $_POST["fileList"];
+			if(!$modifiedfileList) $modifiedfileList = array();
 			$counterForOriginalFiles = $_POST["counterForOriginalFiles"];
 
 			$roomid = $_POST["roomid"];
